@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index</title>
+    <title>Vuelve a ser mi bebita 💕</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+      }
+      .text-container {
+        font-size: 2em;
+        padding: 20px;
+        background: #ffffff;
+        border: 2px solid #e0e0e0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>HOLAA</h1>
+    <div id="text" class="text-container">Hola!!</div>
+
+    <script>
+      // Array de textos que irán apareciendo
+      const textos = [
+        "Hola!!",
+        "Este soy yo sin ti 😔",
+        "¿Podemos arreglar las cosas? 🥺",
+        "Por favor, vuelve a ser mi bebita 💕",
+      ];
+
+      let index = 0; // Índice del texto actual
+      const textContainer = document.getElementById("text");
+
+      function cambiarTexto() {
+        // Aplicar animación de desvanecimiento
+        textContainer.style.animation = "fadeOut 1s forwards";
+
+        // Esperar a que termine la animación antes de cambiar el texto
+        setTimeout(() => {
+          index = (index + 1) % textos.length; // Pasar al siguiente texto
+          textContainer.innerHTML = textos[index];
+          textContainer.style.animation = "fadeIn 1s forwards";
+        }, 1000); // Tiempo en ms (1s para el fadeOut)
+      }
+
+      // Cambiar texto automáticamente cada 3 segundos
+      setInterval(cambiarTexto, 4000);
+
+      // También cambiar texto al hacer clic
+      textContainer.addEventListener("click", cambiarTexto);
+    </script>
   </body>
 </html>
