@@ -3,79 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vuelve a ser mi bebita 💕</title>
+    <title>♥Camila te amo♥</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: linear-gradient(to bottom, #fbc2eb, #a6c1ee);
         color: #333;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         min-height: 100vh;
         margin: 0;
         text-align: center;
       }
       .text-container {
         font-size: 2em;
-        padding: 20px;
-        background: #ffffff;
-        border: 2px solid #e0e0e0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
+        padding: 20px 40px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 3px solid #ffcad4;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
         opacity: 0;
         animation: fadeIn 2s forwards;
+        cursor: default;
+        user-select: none;
+      }
+      .image-container {
+        margin-top: 20px;
+        max-width: 300px;
+        max-height: 300px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+      .hidden {
+        display: none;
       }
       @keyframes fadeIn {
         0% {
           opacity: 0;
+          transform: scale(0.9);
         }
         100% {
           opacity: 1;
+          transform: scale(1);
         }
       }
       @keyframes fadeOut {
         0% {
           opacity: 1;
+          transform: scale(1);
         }
         100% {
           opacity: 0;
+          transform: scale(0.9);
         }
       }
     </style>
   </head>
   <body>
-    <div id="text" class="text-container">Hola!!</div>
+    <div id="text" class="text-container">
+      Hola!! (clickea el texto para ir cambiando de mensaje)
+    </div>
+    <img
+      id="image"
+      class="image-container"
+      src="./assets/images/hombre-saludando.webp"
+      alt="No deberías estar viendo esto JAJAJ"
+    />
 
     <script>
-      // Array de textos que irán apareciendo
       const textos = [
-        "Hola!!",
-        "Este soy yo sin ti 😔",
-        "¿Podemos arreglar las cosas? 🥺",
-        "Por favor, vuelve a ser mi bebita 💕",
+        "Hola!! (clickea el texto para ir cambiando de mensaje)",
+        "Este soy yo sin ti: ",
+        "pero no lo sería si volvieramos a ser novios :D",
+        "que peleamos mucho?",
+        "ya lo sé...",
+        "peeeero...",
+        "qué pareja no lo hace? :3",
+        "aparte...",
+        "yo te amo, y no creo que esto deba terminar ahora mismo 👉👈",
+        "que nos hacemos daño?",
+        "y ke tieneee",
+        "yo sí quiero seguir siendo tu novio...",
+        "y por mucho tiempo más 😿",
+        "entonces...",
+        "qué dices?",
+        "ten en cuenta que me tomé el trabajo de hacer una página web así",
+        "y exclusivamente para uté...",
+        "que paja hacer tantas ventanitas de estas jajajaja T_T",
+        "pero qsy, vo lo vales...",
+        "o sea, si no quieres volver...",
+        "ME CHUPA UN HUEVOOO JAAA",
+        "mentira...",
+        "si no quieres volver, ya no te buscaré :(",
+        "pero yo te amo demasiado, todavía",
+        "y te amaré por mucho tiempo más...",
+        "no quiero que terminemos pa siempre :(",
+        "incluso lloré los primeros 2 días T_T",
+        "te amo.",
+        "entonces... qué opinas?",
+        "en la siguiente ventana vas a poder votar 'sí' o 'no'",
+        "sí‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ no",
+        "JSADJSADJADS WEOONAAA",
+        "no existe tal votación JASDJDASAJS",
+        "no supe hacerla :(",
+        "ya, fin.",
+        "pa ke sigues haciendo click?",
+        "ya paraaaaaa",
+        "oooh que pesada",
+        "ya, basta.",
+        "tas rika :3",
+        "te amo :3",
+        "muuuuaaaak",
+        "el beso solo es si sí quisiste volver",
+        "si no quieres volver, entonces no hay beso pa uté.",
+        "ahora sí, este es el final definitivo.",
+        "clickea otra vez, y volverás al inicio.",
       ];
 
-      let index = 0; // Índice del texto actual
+      const imagenes = [
+        "./assets/images/hombre-saludando.webp",
+        "./assets/images/hombre-triste.webp",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "./assets/images/hombre-enamorado.webp",
+      ];
+
+      let index = 0;
       const textContainer = document.getElementById("text");
+      const imageContainer = document.getElementById("image");
 
-      function cambiarTexto() {
-        // Aplicar animación de desvanecimiento
+      function cambiarContenido() {
         textContainer.style.animation = "fadeOut 1s forwards";
+        imageContainer.style.animation = "fadeOut 1s forwards";
 
-        // Esperar a que termine la animación antes de cambiar el texto
         setTimeout(() => {
-          index = (index + 1) % textos.length; // Pasar al siguiente texto
+          index = (index + 1) % textos.length;
           textContainer.innerHTML = textos[index];
           textContainer.style.animation = "fadeIn 1s forwards";
-        }, 1000); // Tiempo en ms (1s para el fadeOut)
+
+          if (imagenes[index]) {
+            imageContainer.src = imagenes[index];
+            imageContainer.classList.remove("hidden");
+            imageContainer.style.animation = "fadeIn 1s forwards";
+          } else {
+            imageContainer.classList.add("hidden");
+          }
+        }, 1000);
       }
 
-      // Cambiar texto automáticamente cada 3 segundos
-      setInterval(cambiarTexto, 4000);
-
-      // También cambiar texto al hacer clic
-      textContainer.addEventListener("click", cambiarTexto);
+      textContainer.addEventListener("click", cambiarContenido);
     </script>
   </body>
 </html>
