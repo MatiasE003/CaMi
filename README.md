@@ -99,4 +99,4 @@ me gustas un poco muchote muchísimo. ya voy a irme a dormir, porque sino siento
 
 
 
-te voy a dedicar unas cuantas <3
+te voy a dedicar unas cuantas like a faking enfermo <3
